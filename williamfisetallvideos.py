@@ -82,6 +82,7 @@ print(wordis.upper()) #print ABCIOP
 print(wordis.lower()) #print abciop
 llist = ["1","2","3","4"]
 print("-".join(llist)) #print 1-2-3-4
+print("".join(llist)) #print 1234
 number = 345436
 hex_ = 0X33
 print(hex_) #print 51
@@ -159,3 +160,292 @@ print(ceil(number2)) #print 8
 print(floor(number2)) #print 7
 from math import factorial as fact
 print(fact(6)) #print 720
+print("\n")
+
+def printhelloworld(amount):	
+	for eachhello in range(0,amount):
+		print("Hello World",end="")	
+printhelloworld(2) #return HelloWorldHello World
+print("")
+from math import pi
+def circlearea(radius):
+	return pi * (radius ** 2)
+r = 4
+area = circlearea(r)
+print(area) #print 50.26548245743669
+def removevowels(string):
+	vowels="aeiou"
+	newstring = ""
+	for character in string:
+		if character not in vowels:
+			newstring = newstring + character
+	return newstring
+print(removevowels("I love eating apples pies")) #print I lv tng ppls ps
+def commonstartendlists(list1, list2):
+	startsmatch = list1[0] == list2[0]
+	endsmatch = list1[-1] == list2[-1]
+	return startsmatch and endsmatch
+print(commonstartendlists([1,4,6,3],[1,57,3])) #print True
+print(commonstartendlists([1,4,6,3],[1,57,9])) #print False
+def makehtmltag(text, tag):
+	return "<%s>%s</%s>" % (tag, text, tag)
+print(makehtmltag("My Title","title")) #print <title>My Title</title>
+largestnumber = 0
+def setlargestnumber(list_):
+	largest = 0
+	for number in list_:
+		if number > largest:
+			largest = number
+	largestnumber = largest
+	print(largestnumber)
+setlargestnumber([45,3,67,357,33]) #return 357
+print(largestnumber) #print 0
+#inefficient way to print largestnumber global variable
+largestnumber2 = 0
+def setlargestnumber2(list_):
+	largest = 0
+	for number in list_:
+		if number > largest:
+			largest = number
+	largestnumber = largest
+	return largestnumber	
+largestnumber2 = setlargestnumber2([45,3,67,357,33])
+print(largestnumber2) #print 357
+#efficient way to print largestnumber global variable
+largestnumber3 = 0
+def setlargestnumber3(list_):
+	global largestnumber3
+	largest = 0
+	for number in list_:
+		if number > largest:
+			largest = number
+	largestnumber3 = largest
+	print(largestnumber3)
+setlargestnumber3([45,3,67,3357,33]) #return 3357
+aglobal = "global"
+def changeglobalvariable():
+	global aglobal
+	aglobal = "local"
+changeglobalvariable()
+print(aglobal) #print local; however if global aglobal removed in def changeglobalvariable(), then print global
+def addnumbers0(n0, n1, n2):
+	return n0 + n1 + n2
+print(addnumbers0(1,2,3)) #print 6
+def addnumbers(astring, *numbers):
+	print(astring) #print I am about to add some numbers star arguments *numbers at end:
+	print(numbers) #print (1, 2, 3, 4, 5, 6)
+	print(type(numbers)) #print <class 'tuple'>
+	total = 0
+	for eachnumber in numbers:
+		total += eachnumber
+	return total
+print(addnumbers("I am about to add some numbers star arguments *numbers at end: ",1,2,3,4,5,6)) #print I am about to add some numbers star arguments *numbers at end:\n 21
+#pass a dictionary to a function
+def peopleinformation(**peopleages):
+	print(peopleages) #print {'susan': 88, 'ryan': 345, 'roxanne': 45}
+	averageage = 0
+	for age in peopleages.values():
+		averageage += age
+	averageage /= len(peopleages)
+	return (averageage)
+print(peopleinformation(ryan=345, roxanne=45, susan=88)) #print 159.33333333333334
+def teen_stat_calculator(gender, age, hours_of_exercise, weight, owns_phone = True, computer = True):
+	pass
+teen_stat_calculator("Female",15,6,135)
+teen_stat_calculator("Male",15,6,135,False) #False applies to owns_phone, default computer True is correct
+teen_stat_calculator("Female",18,13,135,computer=False) #must specific computer=False because it's false, owns_phone default is correct
+#recursion
+def double0(x):
+	return x * 2
+print(double0(4)) #print 8
+def double(x):
+	print(x)
+	#base case is when x is zero, it's time to return.  exit function in lament terms.
+	if x == 0:
+		return 0
+	return double(x-1) + 2 #It's like a counter starting a four going down by one.  double(x-1) is the counter--like a loop counter.  While counting down, add two for each counting down.  This is recursion.
+"""
+double(x-1)-->recursion
+4-->2
+3-->2
+2-->2
+1-->2
+0-->0
+"""
+print(double(4)) #print 8
+#recursion
+def trianglenumbers(n):
+	if n == 0: #base case
+		return 0
+	return (trianglenumbers(n-1) + n)
+"""
+trianglenumbers(n-1)-->recursion
+1-->1
+2-->3
+3-->6
+4-->10
+5-->15
+"""
+for n in range(0,20):
+	print(trianglenumbers(n))
+#recursion
+def sumdigits(num):
+	#print(num)
+	if num == 0: #base case
+		return 0
+	return (sumdigits(num/10)) + int((num % 10))
+"""
+343-->10 3+4+3
+111222-->9 1+1+1+2+2+2
+"""
+print(sumdigits(343))
+print(sumdigits(111222))
+#recursion
+stringx0 = "yyyxxyy"
+xcount = 0
+for char in stringx0:
+	if char == "x":
+		xcount += 1
+print(xcount) #print 2
+#for loop above as recursion
+def countx(stringx):
+	if stringx == "": #base case
+		return 0
+	lastnumber = stringx[-1]
+	if lastnumber == "x":
+		return countx(stringx[0:-1]) + 1
+	else:
+		return countx(stringx[0:-1]) + 0
+"""
+yyyxxyy-->2  2 x's
+yxxxyxy-->4  4 x's
+"""
+print(countx("yyyxxyy")) #print 2
+print(countx("yxxxyxy")) #print 4
+#recursion factorial function
+def factorial0(x):
+	if x == 0:  #base case
+		return 1
+	total = 1
+	for n in range(1,x+1):
+		total *= n
+	return total
+for x in range(0,10):
+	print(factorial0(x))
+def factorial(x):
+	if x in (0, 1): #base case
+		return 1
+	else:
+		return factorial(x-1) * x
+"""
+0!-->1
+1!-->1
+2!-->2
+3!-->6
+4!-->24
+"""
+for x in range(0,10):
+	print(factorial(x))
+#embedding function calls
+def addten(num):
+	return num + 10
+def double(num):
+	return num * 2
+def triple(num):
+	return num * 3
+number = 3
+tripled = triple(number)
+doubled = double(tripled)
+result = addten(doubled)
+print(result) #print 28  (2(3*3))+10
+number = 3
+result = addten(double(triple(number)))
+print(result) #print 28
+def hw():
+	print("Hello World")
+helloworld = hw()
+helloworld #return Hello World
+def getadder():
+	def add(a, b):
+		return a + b
+	return add
+myadder = getadder()
+print(myadder(4,5)) #print 9
+def getadder2():
+	def add(a, b):
+		def double(n):
+			return n * 2		
+		return double(a) + double(b)
+	return add
+myadder2 = getadder2()
+print(myadder2(4,5)) #print 18
+def combinestrings(*strings):
+	return "".join(strings)
+def printcombinedstrings(function, *args):
+	print(function(*args))
+printcombinedstrings(combinestrings, "123","abs","tyef3") #print 123abstyef3
+print("\n")
+
+age = 34
+assert age >= 0, "If assert is false, the do the action:  AssertionError:  How is your age negative?  Python crashes.\n"
+print("Your age is",age)
+while True:
+	try:
+		#numer = float(input(("Enter a numerator: ")))
+		#denom = float(input(("Enter a denominator: ")))
+		numer = 5
+		denom = 0
+		print("The fraction ratio is %f " % (numer/denom))
+		break
+	except ZeroDivisionError:
+		print("An error happened")
+		break
+myfile = open("fileondesktop.txt","w")
+try:
+	myfile.write("I wrote in a new file\n")
+except BaseException:
+	print("error")
+finally: #finally always executes 
+	myfile.close()
+# age = 199
+# if age > 135:
+# 	#print("You're supposed to be dead!")
+# 	raise Exception("You're supposed to be dead.  You're older than 135 years old.") #user created an custom error message using raise Exception().  error message appered because age = 199 is greater than age > 135.
+filename = "example.txt"
+examplefile = open(filename,"w")
+try:
+	examplefile.write("Blue goose on the loose\n")
+	examplefile.write("Honeycomb cereal\n")
+except Exception as error:
+	print("Problem handling file, error was %s" % error)
+finally:
+	examplefile.close()
+with open(filename,"w") as examplefile:
+	lines = ["Happy whale on parade!\n","Red Bee dancing\n","The great git in the sky!\n"]
+	examplefile.write(lines[0])
+	examplefile.write(lines[1])
+	examplefile.write(lines[2])
+	examplefile.writelines(lines) #better than examplefile.write(lines[])
+with open(filename,"r") as readingfile:
+	for eachline in readingfile.readlines():
+		print(eachline)
+with open(filename,"r") as readingfile:
+	readnoforloop = readingfile.read()
+	print(readnoforloop)
+filecontent = ""
+with open(filename,"r") as readingfile:
+	filecontent = readingfile.read()
+newfilecontent = []
+counter = 0
+for character in filecontent:
+	if counter % 2 == 0:
+		newfilecontent.append(character.upper())
+	else:
+		newfilecontent.append(character.lower())
+	counter += 1
+newfilecontent = "".join(newfilecontent)
+with open(filename,"w") as writeablefile:
+	writeablefile.write(newfilecontent)
+with open(filename,"a") as appendingfile:
+	for eachnumber in range(1,21):
+		appendingfile.write(str(eachnumber))
