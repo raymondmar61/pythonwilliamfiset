@@ -449,3 +449,256 @@ with open(filename,"w") as writeablefile:
 with open(filename,"a") as appendingfile:
 	for eachnumber in range(1,21):
 		appendingfile.write(str(eachnumber))
+print("\n")
+
+print(abs(-100)) #print 100
+print(pow(4,2)) #print 16.0
+print(int(pow(4,2))) #print 16.0
+print(4**2) #print 16
+numbers3 = [1, 77, 33, 55]
+print(min(numbers3)) #print 1
+print(max(numbers3)) #print 77
+letters = ["za","y","f","h","a"]
+print(min(letters)) #print a
+print(max(letters)) #print za
+numbers = ["one","two","three","four"]
+seasons = ["fall","winter","spring","summer"]
+print(enumerate(numbers)) #print <enumerate object at 0x7f2581f073f0>
+print(list(enumerate(numbers))) #print [(0, 'one'), (1, 'two'), (2, 'three'), (3, 'four'
+print(list(enumerate(seasons))) #print [(0, 'fall'), (1, 'winter'), (2, 'spring'), (3, 'summer')]
+print(tuple(enumerate(seasons))) #print ((0, 'fall'), (1, 'winter'), (2, 'spring'), (3, 'summer'))
+filename = "example.txt"
+"""
+filecontent = ""
+with open(filename,"r") as readingfile:
+	filecontent = readingfile.read()
+newfilecontent = []
+counter = 0
+for character in filecontent:
+	if counter % 2 == 0:
+		newfilecontent.append(character.upper())
+	else:
+		newfilecontent.append(character.lower())
+	counter += 1
+newfilecontent = "".join(newfilecontent)
+"""
+filecontent = ""
+with open(filename,"r") as readingfile:
+	filecontent = readingfile.read()
+newfilecontent = []
+for index, character  in enumerate(filecontent):
+	if index % 2 == 0:
+		newfilecontent.append(character.upper())
+	else:
+		newfilecontent.append(character.lower())
+newfilecontent = "".join(newfilecontent)
+numbers = ["one","two","three","four"]
+seasons = ["fall","winter","spring","summer"]
+print(zip(numbers, seasons)) #print <zip object at 0x7fc89fa54108>
+print(list(zip(numbers, seasons))) #print [('one', 'fall'), ('two', 'winter'), ('three', 'spring'), ('four', 'summer')]
+for eachnumber, eachseason in zip(numbers, seasons):
+	print(eachnumber, eachseason) #print one fall\n two winter\n three spring\n four summer
+unordered_numbers = [1,7,3,7,2,4,0,2,-2,5,3]
+unordered_characters = ["r","t","©","v","s","b"]
+unordered_strings = ["cat","dog","mice"]
+unordered_dictionary = [{2:"two",1:"one",4:"four"}]
+print(sorted(unordered_numbers)) #print [-2, 0, 1, 2, 2, 3, 3, 4, 5, 7, 7]
+print(sorted(unordered_characters)) #print ['b', 'r', 's', 't', 'v', '©']
+print(sorted(unordered_strings))  #print ['cat', 'dog', 'mice']
+print(sorted(unordered_dictionary)) #print [{1: 'one', 2: 'two', 4: 'four'}]
+print(sorted("hello world!")) #print [' ', '!', 'd', 'e', 'h', 'l', 'l', 'l', 'o', 'o', 'r', 'w']; broke string into a list, then sort characters in the list individually
+print(sorted(unordered_numbers, reverse = True)) #print [7, 7, 5, 4, 3, 3, 2, 2, 1, 0, -2]
+print(sorted(unordered_characters, reverse = True)) #print ['©', 'v', 't', 's', 'r', 'b']
+print(sorted(unordered_strings, reverse = True)) #print ['mice', 'dog', 'cat']
+print(sorted(unordered_dictionary, reverse = True)) #print [{1: 'one', 2: 'two', 4: 'four'}]
+print(sorted("hello world!", reverse = True)) #print ['w', 'r', 'o', 'o', 'l', 'l', 'l', 'h', 'e', 'd', '!', ' ']; broke string into a list, then sort characters in the list individually
+print(len([1,2,3,4,5])) #print 5
+print(len({"two": 2, "key": "value", ("tuple", "str") : {"list":"inception"}})) # print 3
+print(len("four"))  #print 4
+#print(len((1), (2), (3), (4), (5, 6, (7, 8)))) #error message len takes one argument only.  len() takes exactly one argument (5 given)
+#print(len((1), (2), (3), (4), (5, 6, 7, 8))) #error message len takes one argument only
+def greaterthantenfilterlist(num):
+	return num > 10
+numberslist = [5, 7, 345, 78, 34, 5]
+print(filter(greaterthantenfilterlist, numberslist)) #print <filter object at 0x7f3fa98dc278>
+print(list(filter(greaterthantenfilterlist, numberslist))) #print [345, 78, 34]
+def beginswithefilterlist(text, prefix="e"):
+	return text.startswith(prefix)
+words = ["earth","unicycle","moose","beed","eradicate"]
+print(list(filter(beginswithefilterlist, words))) #print ['earth', 'eradicate']
+numbers = list(range(0,11))
+print(numbers) #print [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+def squaremaplist(num):
+	return pow(num,2)
+"""
+numberssquared = []
+for eachnumbers in numbers:
+	print(squaremaplist(eachnumbers))
+	numberssquared.append(squaremaplist(eachnumbers))
+print(numberssquared) #print [0.0, 1.0, 4.0, 9.0, 16.0, 25.0, 36.0, 49.0, 64.0, 81.0, 100.0]
+"""
+print(list(map(squaremaplist, numbers))) #print [0.0, 1.0, 4.0, 9.0, 16.0, 25.0, 36.0, 49.0, 64.0, 81.0, 100.0].  No need for the for loop.
+print(list(map(str, numbers))) #print ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'.  str is a function
+print(list(map(int, numbers))) #print [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].  int is a function
+# reduce is python2.7
+# def addreducelist(a, b):
+# 	return a + b
+# print(reduce(addreducelist, range(1,6))) #print 15
+from math import pi as PIE
+print(tuple("My_Python")) #print ('M', 'y', '_', 'P', 'y', 't', 'h', 'o', 'n')
+print(tuple((1,2,3))) #print (1, 2, 3)
+print(tuple( ['G','N','U'] )) #print ('G', 'N', 'U'). List becomes a tuple
+print(list(range(10))) #print [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+print(list("23456")) #print ['2', '3', '4', '5', '6'].  Separates each string character into a list with elements
+print(list((1,2,3,4))) #print [1, 2, 3, 4].  Tuple becomes a list.
+print(str(True)) #print True
+print(str("1234567")) #print 1234567
+print(str(PIE)) #print 3.141592653589793
+print(bool(1>3)) #print False boolean returns True or False
+print(bool('a' < 'v')) #print True boolean returns True or False
+print(bool(1==1)) #print True boolean returns True or False
+print(int(456)) #print 456
+print(int("453")) #print 453 converts string to integer
+#print(int( [567] )) #error message because can't convert a list to an integer
+print(float(PIE)) #print 3.141592653589793
+print(float("1.474")) #print 1.474
+print(float(508)) #print 508.0
+#set an unordered list of unique elements, final result is a list with no duplicates
+list_ = [1,1,1,2,3,4,4,4]
+print(set(list_)) #print {1, 2, 3, 4}
+my_set = set()
+my_set.add(5)
+my_set.add(1)
+my_set.add(2)
+print(my_set) #print {1, 2, 5}
+my_set.update([11,1,6,8])
+print(my_set) #print {1, 2, 5, 6, 8, 11}
+print(list(my_set)) #print [1, 2, 5, 6, 8, 11] as a list
+#any, all take a list return True or False
+print(any([True, False, 0, 1 < 0])) #print True
+print(any([False])) #print False
+print(any([])) #print False
+print(all([True, True])) #print True
+print(all([True, 34<5])) #print False
+#dir
+import os
+#print(dir(os)) #uppercase are constants, underscores begin and end are Python built-in variables, leading underscores we shouldn't touch, rest are functions or classes
+#print(os.__all__) #tells us what we should be using
+print(dir(str))
+#input get user input.  Try to get you a number.
+#input_ = input("Enter a number: ")
+#print("Number is",input_)  #print Number is |input_|
+#eval evalulates a string like a math equation
+foo = 34
+bar = 3
+print(eval("foo * bar")) #print 102.  34*3=102
+print("\n")
+
+def square(x):
+	return x*x
+print(square(99)) #print 9801
+squarelambda = lambda x: x*x
+print(squarelambda(99)) #print 9801
+def sumrgb(r, g, b):
+	return r + g + b
+print(sumrgb(45, 56, 87)) #print 188
+sumrgb = lambda r, g, b: r + g + b
+print(sumrgb(45, 56, 87))
+def functionname(yes, no):
+	return yes, no
+print(functionname("hi","beering")) #print ('hi', 'beering')
+functionname = lambda yes, no: print(yes, no)
+functionname("hi","beering") #return hi beering
+remove_duplicates = lambda iterable: set(iterable)
+print(remove_duplicates("roooot")) #print {'r', 't', 'o'}
+print(remove_duplicates([1,1,1,2,3,4])) #print {1, 2, 3, 4}
+remove_duplicateslist = lambda iterable: list(set(iterable))
+print(remove_duplicateslist("roooot")) #print ['r', 't', 'o']
+print(remove_duplicateslist([1,1,1,2,3,4])) #print [1, 2, 3, 4]
+convert_list_to_int = lambda iterable: map(int, iterable)
+print(convert_list_to_int(["123","456","34"])) #print <map object at 0x7f1f6c877400>
+convert_list_to_int = lambda iterable: list(map(int, iterable))
+print(convert_list_to_int(["123","456","34"])) #print [123, 456, 34]
+def evens(list_):
+	even = []
+	for num in list_:
+		if num % 2 == 0: #number is even
+			even.append(num)
+	return even
+print(evens(range(100))) #print [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98]
+def evens2(list_):
+	#add a lambda
+	is_even = lambda num: num % 2 == 0
+	even = []
+	for num in list_:
+		if is_even(num):
+			even.append(num)
+	return even
+print(evens2(range(100)))
+is_even = lambda num: num % 2 == 0
+evens3 = lambda lst_: list(filter(is_even, lst_))
+print(evens3(range(100)))
+print("\n")
+
+class Boat():
+	def __init__(self):
+		self.cargoweight = 23
+	def printcargoweight(self):
+		return self.cargoweight
+myboat = Boat()
+myboat2 = Boat()
+print(myboat) #print <__main__.Boat object at 0x7f696b691160>
+print(myboat2) #print <__main__.Boat object at 0x7f42f4f621d0>
+print(myboat.printcargoweight()) #print 23
+class Human():
+	def __init__(self, name, gender):
+		self.name = name
+		self.gender = gender	
+	def printname(self):
+		return self.name
+	def speakname(self):
+		print("My name is %s" % self.name)
+	def speak(self, text):
+		print(text)
+	def performmathtask(self, mathoperations, *args):
+		print("%s performed a math operation and the result was %f" % (self.name, mathoperations(*args))) #mathoperations is calling the functions outside class
+def mathoperationsadd(a, b):
+	return a + b
+def mathoperationsmultiply(a, b):
+	return a * b
+will = Human("nameWilliam","gendermale")
+print(will.name) #print nameWilliam
+print(will.gender) #print gendermale
+print(will.printname()) #print nameWilliam
+will.speakname() #print My name is nameWilliam
+will.speak("text is I love programming") #print text is I love programming
+ryan = Human("nameRyanStevens","gendermale")
+ryan.performmathtask(mathoperationsadd, 34, 67) #return nameRyanStevens performed a math operation and the result was 101.000000
+ryan.performmathtask(mathoperationsmultiply, 34, 67) #return nameRyanStevens performed a math operation and the result was 2278.000000
+class Rectange():
+	def __init__(self, width, length):
+		self.wnewvariable = width
+		self.lnewvariable = length
+	def area(self):
+		return self.wnewvariable * self.lnewvariable
+	def perimeter(self):
+		return (self.wnewvariable * 2) + (self.lnewvariable * 2)
+rectangle1 = Rectange(5, 6)
+rectangle2 = Rectange(2, 10)
+#print(rectangle1.width) #error message
+print(rectangle1.wnewvariable) #print 5
+print(rectangle1.area()) #print 30
+print(rectangle2.perimeter()) #print 24
+class Character():
+	totalnumberofcharacters = 0 #class variable or static variable
+	maximumhealth = 100
+	def __init__(self,name):
+		self.name = name
+		self.health = Character.maximumhealth
+		Character.totalnumberofcharacters += 1
+bob = Character("Bob")
+ryan = Character("Ryan")
+print(bob.health) #print 100
+print(Character.totalnumberofcharacters) #print 2
+print(Character.maximumhealth) #print 100
+
