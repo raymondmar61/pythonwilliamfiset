@@ -701,4 +701,94 @@ ryan = Character("Ryan")
 print(bob.health) #print 100
 print(Character.totalnumberofcharacters) #print 2
 print(Character.maximumhealth) #print 100
+class ClassName():
+	def __init__(self):
+		self._privatevariable = "private"
+		self.publicvariable = "public"
+	def _privateMethod(self):
+		pass
+	def _privateMethod2(self):
+		pass
+	def publicMethod(self):
+		return 5
+c = ClassName()
+print(c._privateMethod()) #print None
+print(c.publicMethod()) #print 5
+print(c._privatevariable) #print private
+print(c.publicvariable) #print public
+class Superclasscar():
+	def __init__(self, cartype, color):
+		self.cartype = cartype
+		self.color = color
+	def drive(self):
+		print("Driving my %s %s" % (self.color, self.cartype))
+	def park(self):
+		print("Parked car")
+mycar = Superclasscar("Toyota","Yellow")
+mycar.drive() #return Driving my Yellow Toyota
+mycar.park() #return Parked car
+class Subclasshonda(Superclasscar):
+	def __init__(self, color):
+		super(Subclasshonda, self).__init__("Honda", color)
+myhonda = Subclasshonda("Green")
+myhonda.drive() #return Driving my Green Honda
+print(myhonda.color) #print Green
+# from abc import ABCMeta, abstractmethod #ABC is Abstract Base Class
+# class Shape(object):
+# 	__metaclass__ = ABCMeta
+# 	@abstractmethod
+# 	def area(self):
+# 		pass
+# 	@abstractmethod
+# 	def perimeter(self):
+# 		pass
+# s = Shape()
+# print(s) #print <__main__.Shape object at 0x7f36b07dc438>
+# print(s.area()) #print None
+class Shoppinglist(object):
+	def __init__(self, **items):
+		self.items = items
+	def __len__(self):
+		totalitems = 0
+		for eachitems in self.items:
+			totalitems += 1
+		return totalitems
+	def __str__(self):
+		return "List contains items: " + ", ".join(self.items.keys())
+	#def __del__(self):
+		#print("Object is being destroyed")
+	def __add__(self, obj):
+		newdictionary = {}
+		for key, value in self.items.items():
+			newdictionary[key] = value
+		for key, value in obj.items.items():
+			if key in self.items:
+				newdictionary[key] = newdictionary[key] + value
+			else:
+				newdictionary[key] = value
+		return newdictionary
+		return "Adding two shopping lists"
+willsitems = Shoppinglist(Apple=4, Pear=23, Pie = 4)
+print(len(willsitems)) #print 3
+print(str(willsitems)) #print List contains items: Pie, Pear, Apple
+ryansitems = Shoppinglist(Bannana = 89, Pear = 23, Carrot = 8)
+print(willsitems+ryansitems) #print {'Bannana': 89, 'Apple': 4, 'Pie': 4, 'Carrot': 8, 'Pear': 46}.  It didn't print "Adding two shopping lists"
+print("\n")
 
+for n in range(0,10):
+	print(n) #print 0 to 9 in its own line
+gen = iter(range(0,10))
+print(gen) #print <range_iterator object at 0x7fdd41446720>
+print(next(gen)) #print 0
+print(next(gen)) #print 1
+print(next(gen)) #print 2
+print(next(gen)) #print 3
+gen = iter(reversed("abcde"))
+print(next(gen)) #print e
+print(next(gen)) #print d
+print(next(gen)) #print c
+print(next(gen)) #print b
+
+#gmpy2 runs on Python 2.7.
+#import gmpy2
+#print(dir(gmpy2))
